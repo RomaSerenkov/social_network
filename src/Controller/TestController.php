@@ -10,7 +10,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TestController extends AbstractController
 {
     /**
-     * @Route("/hello")
+     * @Route("/hello", name="hello")
      */
     public function hello()
     {
