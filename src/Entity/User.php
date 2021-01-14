@@ -5,12 +5,18 @@ namespace App\Entity;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+<<<<<<< HEAD
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity("email")
+=======
+
+/**
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+>>>>>>> roma
  */
 class User implements UserInterface
 {
@@ -23,7 +29,10 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+<<<<<<< HEAD
      * @Assert\Email
+=======
+>>>>>>> roma
      */
     private $email;
 

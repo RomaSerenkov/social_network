@@ -37,6 +37,9 @@ security:
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/hello, roles: ROLE_USER  }
+<<<<<<< HEAD
         - { path: ^/, roles: ROLE_USER  }
+=======
+>>>>>>> roma
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }

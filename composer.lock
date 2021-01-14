@@ -4,7 +4,11 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
+<<<<<<< HEAD
     "content-hash": "b4a144778b734f78479d47915d9ec1f6",
+=======
+    "content-hash": "76413b7a0ea9bcd1c5f63de5a85fd824",
+>>>>>>> roma
     "packages": [
         {
             "name": "composer/package-versions-deprecated",
