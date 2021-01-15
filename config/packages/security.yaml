@@ -21,6 +21,8 @@ security:
             form_login:
                 login_path: login
                 check_path: login
+                always_use_default_target_path: false
+                default_target_path: /
             logout:
                 path: app_logout
             anonymous: lazy
@@ -36,10 +38,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, roles: IS_AUTHENTICATED_ANONYMOUSLY  }
         - { path: ^/hello, roles: ROLE_USER  }
-<<<<<<< HEAD
         - { path: ^/, roles: ROLE_USER  }
-=======
->>>>>>> roma
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
