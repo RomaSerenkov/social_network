@@ -3,25 +3,25 @@ html {
     height: 100%;
     width: 100%;
 }
-body{
+body {
     margin: 0px;
     min-height: 100%;
     width: 100%;
 }
 
-.login_box{
+.login_box {
     margin: 10% auto 0 auto;
 }
 
-.sidebar{
+.sidebar {
     margin-top: 20px;
 }
 
-.card{
+.card {
     margin-bottom: 20px;
 }
 
-.mini-submenu{
+.mini-submenu {
     display:none;
     background-color: rgba(0, 0, 0, 0);
     border: 1px solid rgba(0, 0, 0, 0.9);
@@ -31,7 +31,7 @@ body{
 
 }
 
-.mini-submenu:hover{
+.mini-submenu:hover {
     cursor: pointer;
 }
 
@@ -46,7 +46,7 @@ body{
     background-color: #000;
 }
 
-#slide-submenu{
+#slide-submenu {
     background: rgba(0, 0, 0, 0.45);
     display: inline-block;
     padding: 0 8px;
