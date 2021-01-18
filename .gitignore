@@ -8,6 +8,12 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
+.env
+.idea/
+
+/node_modules/
+/public/build/
+*.log
 
 ###> symfony/phpunit-bridge ###
 .phpunit
@@ -18,3 +24,6 @@
 ###> symfony/web-server-bundle ###
 /.web-server-pid
 ###< symfony/web-server-bundle ###
+
+/.php_cs
+/.php_cs.cache
