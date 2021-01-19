@@ -11,8 +11,6 @@
 /node_modules/
 ###< symfony/framework-bundle ###
 
-
-
 ###> symfony/phpunit-bridge ###
 .phpunit
 .phpunit.result.cache
