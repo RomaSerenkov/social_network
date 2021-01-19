@@ -6,14 +6,12 @@
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
 /var/
+/.env
 /vendor/
-###< symfony/framework-bundle ###
-.env
-.idea/
-
 /node_modules/
-/public/build/
-*.log
+###< symfony/framework-bundle ###
+
+
 
 ###> symfony/phpunit-bridge ###
 .phpunit
@@ -25,5 +23,17 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 
+###> build ###
+/public/build/
+###< build ###
+
+###> idea ###
+.idea/
+###< idea ###
+
+###> php-cs-fixer ###
 /.php_cs
 /.php_cs.cache
+###< php-cs-fixer ###
+
+/*.log
