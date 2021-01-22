@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sign in!{% endblock %}
+
+{% block stylesheets %}
+     {{ encore_entry_link_tags('login_style') }}
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row justify-content-center sign-container">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <h1 class="text-center login-title">Please sign in</h1>
+                <div class="account-wall">
+                    <img class="profile-img" src="{{ asset('build/images/login/photo.png') }}"
+                         alt="">
+                    <form class="form-signin" method="post">
+                        {% if error %}
+                            <div class="alert alert-danger">
+                                {{ error.messageKey|trans(error.messageData, 'security') }}
+                            </div>
+                        {% endif %}
+                        <input type="email" value="{{ last_username }}"
+                               name="email" class="form-control"
+                               placeholder="Email" required autofocus
+                        >
+                        <input type="password" name="password" class="form-control"
+                               placeholder="Password" required
+                        >
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}"
+                        >
+                        <button class="btn btn-lg btn-dark btn-block" type="submit">
+                            Sign in</button>
+                    </form>
+                </div>
+                <a href="#" class="text-center new-account">Create an account </a>
+            </div>
+        </div>
+    </div>
+{% endblock %}
