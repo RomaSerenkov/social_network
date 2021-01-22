@@ -2,3 +2,18 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+.navbar-dark{
+    margin-bottom: 3%;
+}
+
+.sidebar a {
+    color: #2e3136;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sidebar a:hover{
+    color: white;
+    background: #777777;
+}

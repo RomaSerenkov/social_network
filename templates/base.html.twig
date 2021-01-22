@@ -1,21 +1,76 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {{ encore_entry_link_tags('bootstrap') }}
-        {{ encore_entry_link_tags('app_style') }}
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {{ encore_entry_link_tags('bootstrap') }}
+    {{ encore_entry_link_tags('app_style') }}
 
-        {% block stylesheets %}{% endblock %}
+    {% block stylesheets %}{% endblock %}
 
-    </head>
-    <body>
-        <div class="container-fluid">
-            {% block body %}{% endblock %}
-
-            {{ encore_entry_script_tags('app') }}
-
-            {% block javascripts %}{% endblock %}
+</head>
+<body>
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Social Network</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                {% if app.user %}
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle my-dropdown-toggle" href="#" id="navbarDropdown"
+                               role="button" data-toggle="dropdown" aria-expanded="false">
+                                {{ app.user.username }}</a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ path('profile_index') }}">Profile</a>
+                                <a class="dropdown-item" href="{{ path('security_logout') }}">Logout</a>
+                            </div>
+                        </li>
+                    </ul>
+                {% endif %}
+            </div>
         </div>
-    </body>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            {% if app.user %}
+            <div class="col-sm-4 col-md-3 sidebar">
+                <div class="list-group list-group-flush">
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-comment-o"></i> My page
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-comment-o"></i> News
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-search"></i> Friends
+                    </a>
+                    <a href="#" class="list-group-item">
+                        <i class="fa fa-user"></i> Messages <span class="badge badge-info">14</span>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-8 col-md-9">
+                {% else %}
+                <div class="col-sm-12 col-md-12">
+                    {% endif %}
+
+
+                    {% block body %}{% endblock %}
+                </div>
+
+            </div>
+        </div>
+
+        {{ encore_entry_script_tags('app') }}
+
+        {% block javascripts %}{% endblock %}
+    </div>
+</div>
+</body>
 </html>
