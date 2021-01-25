@@ -4,8 +4,10 @@ namespace App\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Validator\Constraints\File;
 
 class ProfileFormType extends AbstractType
 {
@@ -22,8 +24,26 @@ class ProfileFormType extends AbstractType
             ->add('lastName', TextType::class, [
                 'required' => false,
             ])
-            ->add('birthday', TextType::class, [
+            ->add('birthday', DateType::class, [
+                'widget' => 'single_text',
+                'format' => 'yyyy-MM-dd',
+            ])
+            ->add('image', FileType::class, [
                 'required' => false,
+                'label' => 'Photo (png, jpeg)',
+                'attr' => [
+                    'accept' => "image/jpeg, image/png"
+                ],
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a JPG or PNG',
+                    ])
+                ]
             ]);
     }
 }

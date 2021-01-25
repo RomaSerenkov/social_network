@@ -38,7 +38,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Assert\DateTime()
+     * @Assert\Date()
      */
     private $birthday;
 
