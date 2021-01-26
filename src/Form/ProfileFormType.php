@@ -30,7 +30,7 @@ class ProfileFormType extends AbstractType
             ])
             ->add('image', FileType::class, [
                 'required' => false,
-                'label' => 'Photo (png, jpeg)',
+                'label' => 'Photo',
                 'attr' => [
                     'accept' => "image/jpeg, image/png"
                 ],

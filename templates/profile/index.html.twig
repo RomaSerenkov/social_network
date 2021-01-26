@@ -3,62 +3,33 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-
-    <h4 class="text-center">Your Profile</h4>
-    <div class="row justify-content-center mb-3">
-        {% if user.image is null %}
-            <img src="{{ asset('build/images/login/user-anonymous.png') }}"
-                 class="rounded-circle" width="100px"/>
-        {% else %}
-            <img src="{{ asset('build/images/uploads/' ~ user.email ~ '/' ~ user.image) }}"
-                 class="rounded-circle" width="100px"/>
-        {% endif %}
+    <div id="profilePage">
+        <h4 class="text-center">Your Profile</h4>
+        <div class="row justify-content-center mb-3">
+            {% if user.image is null %}
+                <img src="{{ asset('build/images/login/user-anonymous.png') }}"
+                     class="rounded-circle" width="100px"/>
+            {% else %}
+                <img src="{{ asset('build/images/uploads/' ~ user.email ~ '/' ~ user.image) }}"
+                     class="rounded-circle" width="100px"/>
+            {% endif %}
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"><b>First Name:</b> {{ user.firstname }}</li>
+            <li class="list-group-item"><b>Last Name:</b> {{ user.lastname }}</li>
+            <li class="list-group-item"><b>Birthday:</b> {{ user.birthday|date("d.m.Y") }}</li>
+        </ul>
     </div>
-
-    <ul class="list-group">
-        <li class="list-group-item"><b>First Name:</b> {{ user.firstname }}</li>
-        <li class="list-group-item"><b>Last Name:</b> {{ user.lastname }}</li>
-        <li class="list-group-item"><b>Birthday:</b> {{ user.birthday|date("d.m.Y") }}</li>
-    </ul>
     <div class="row justify-content-center mt-3">
-        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal">
+        <button type="button" id="editModalButton" class="btn btn-secondary">
             Edit Profile
         </button>
     </div>
-
-    <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Edit Profile</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    {{ form_start(form) }}
-                    {{ form_row(form.firstName, {'attr': {'class': 'form-control',
-                        'value' : user.firstname }}) }}
-                    {{ form_row(form.lastName, {'attr': {'class': 'form-control',
-                        'value' : user.lastname }}) }}
-                    {{ form_row(form.birthday, {'attr': {'class': 'form-control',
-                        'value' : user.birthday|date("Y-m-d") }}) }}
-                    {{ form_label(form.image) }}
-                    {% if user.image is not null %}
-                        <img src="{{ asset('build/images/uploads/' ~ user.email ~ '/' ~ user.image) }}"
-                             class="rounded-circle" width="50px"/>
-                    {% endif %}
-                    {{ form_widget(form.image, {'attr': {'class': 'form-control-file' }}) }}
-
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-secondary">Save changes</button>
-                    {{ form_end(form) }}
-                </div>
-            </div>
-        </div>
     </div>
+{% endblock %}
 
+{% block javascripts %}
+    {{ encore_entry_script_tags('profile') }}
 {% endblock %}
