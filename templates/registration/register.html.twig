@@ -19,8 +19,15 @@
                     {% endfor %}
 
                     {{ form_start(registrationForm, {'attr': {'class': 'form-signin'}}) }}
+                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control',
+                        'placeholder': 'Firstname'}}) }}
+                    {{ form_errors(registrationForm.firstName) }}
+                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control',
+                        'placeholder': 'Lastname'}}) }}
+                    {{ form_errors(registrationForm.lastName) }}
                     {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control',
                         'placeholder': 'Email'}}) }}
+                    {{ form_errors(registrationForm.email) }}
                     {{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control',
                         'placeholder': 'Password'}}) }}
                     {{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control',
