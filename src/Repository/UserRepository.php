@@ -24,6 +24,10 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
     /**
      * Used to upgrade (rehash) the user's password automatically over time.
+     * @param UserInterface $user
+     * @param string $newEncodedPassword
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function upgradePassword(UserInterface $user, string $newEncodedPassword): void
     {
@@ -35,5 +39,46 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
 
         $this->_em->persist($user);
         $this->_em->flush();
+    }
+
+    public function findAllPeoples($profileEmail, $limit = null, $offset = null): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->where('u.email <> :profileEmail')
+            ->setParameter('profileEmail', $profileEmail)
+            ->orderBy('u.email', 'ASC');
+
+        if ($limit) {
+            $queryBuilder->setMaxResults($limit);
+        }
+
+        if ($offset) {
+            $queryBuilder->setFirstResult($offset);
+        }
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->execute();
+    }
+
+    public function findByFirstName($username, $profileEmail, $limit = null, $offset = null): array
+    {
+        $queryBuilder = $this->createQueryBuilder('u')
+            ->where('u.firstName LIKE :username AND u.email <> :profileEmail')
+            ->setParameter('username', '%' . $username . '%')
+            ->setParameter('profileEmail', $profileEmail)
+            ->orderBy('u.email', 'ASC');
+
+        if ($limit) {
+            $queryBuilder->setMaxResults($limit);
+        }
+
+        if ($offset) {
+            $queryBuilder->setFirstResult($offset);
+        }
+
+        $query = $queryBuilder->getQuery();
+
+        return $query->execute();
     }
 }

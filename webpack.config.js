@@ -14,12 +14,6 @@ Encore
     // only needed for CDN's or sub-directory deploy
     //.setManifestKeyPrefix('build/')
 
-    .copyFiles({
-        from: './assets',
-        //pattern: /\.(?!(png|jpg|jpeg|gif)$)([^.]+$)/,
-        //to: 'images/[name].[ext]'
-    })
-
     /*
      * ENTRY CONFIG
      *
@@ -28,6 +22,7 @@ Encore
      */
     .addEntry('app', './assets/app.js')
     .addEntry('profile', './assets/js/profile.js')
+    .addEntry('friend', './assets/js/friend.js')
 
     .addStyleEntry('bootstrap', './assets/styles/global.scss')
     .addStyleEntry('app_style', './assets/styles/app.css')

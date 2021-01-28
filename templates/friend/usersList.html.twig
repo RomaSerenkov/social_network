@@ -1,0 +1,23 @@
+{% for user in users %}
+    <li class="list-group-item">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-md-2">
+                {% if user.image is null %}
+                    <img src="{{ asset('images/login/user-anonymous.png') }}"
+                         class="rounded-circle" width="70px"/>
+                {% else %}
+                    <img src="{{ asset('images/uploads/' ~ user.email ~ '/' ~ user.image) }}"
+                         class="rounded-circle" width="70px"/>
+                {% endif %}
+            </div>
+            <div class="col-md-4">
+                <div class="card-body">
+                    <h6 class="card-title">
+                            {{ user.firstname }}
+                            {{ user.lastname }}
+                    </h6>
+                </div>
+            </div>
+        </div>
+    </li>
+{% endfor %}
