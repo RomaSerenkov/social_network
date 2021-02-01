@@ -22,7 +22,6 @@ $(document).ready(function () {
         }, 400);
     });
 
-
     function findUsers(url, method, postData = null)
     {
         $('#loader').toggleClass("d-none");
@@ -59,7 +58,7 @@ $(document).ready(function () {
     // ajax request to end page
     $(window).scroll(function () {
         if ($(window).scrollTop() == $(document).height() - $(window).height()) {
-            if (countUsers >= offset + rowPerPage) {
+            if (countUsers > offset + rowPerPage) {
                 offset += rowPerPage;
                 let data = new FormData();
                 data.append("offset", offset);

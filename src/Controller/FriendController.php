@@ -51,7 +51,12 @@ class FriendController extends AbstractController
             $firstName = $request->request->get("firstName");
             $offset = $request->request->get("offset");
 
-            $users = $userRepository->findByFirstName($firstName, $this->getUser()->getUsername(), self::ROW_PER_PAGE, $offset);
+            $users = $userRepository->findByFirstName(
+                $firstName,
+                $this->getUser()->getUsername(),
+                self::ROW_PER_PAGE,
+                $offset
+            );
 
             $html = $this->renderView('friend/usersList.html.twig', [
                 'users' => $users,
