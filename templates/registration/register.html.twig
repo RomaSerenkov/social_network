@@ -14,27 +14,18 @@
                 <div class="account-wall">
                     <img class="profile-img" src="{{ asset('build/images/login/add-user-icon-256.png') }}"
                          alt="">
-                    {% for flashError in app.flashes('verify_email_error') %}
-                        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-                    {% endfor %}
 
                     {{ form_start(registrationForm, {'attr': {'class': 'form-signin'}}) }}
-                    {{ form_widget(registrationForm.firstName, {'attr': {'class': 'form-control',
-                        'placeholder': 'Firstname'}}) }}
-                    {{ form_errors(registrationForm.firstName) }}
-                    {{ form_widget(registrationForm.lastName, {'attr': {'class': 'form-control',
-                        'placeholder': 'Lastname'}}) }}
-                    {{ form_errors(registrationForm.lastName) }}
-                    {{ form_widget(registrationForm.email, {'attr': {'class': 'form-control',
-                        'placeholder': 'Email'}}) }}
-                    {{ form_errors(registrationForm.email) }}
-                    {{ form_widget(registrationForm.password.first, {'attr': {'class': 'form-control',
-                        'placeholder': 'Password'}}) }}
-                    {{ form_widget(registrationForm.password.second, {'attr': {'class': 'form-control',
-                        'placeholder': 'Repeat password'}}) }}
 
-                    <button type="submit" class="btn btn-lg btn-dark btn-block">Register</button>
+                    {{ form_row(registrationForm.firstName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(registrationForm.lastName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(registrationForm.email, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(registrationForm.password.first, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(registrationForm.password.second, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(registrationForm.register, {'attr': {'class': 'btn btn-lg btn-dark btn-block'}}) }}
+
                     {{ form_end(registrationForm) }}
+
                 </div>
                 <a href="{{ path('security_login') }}" class="text-center new-account">Login to your account</a>
             </div>
