@@ -48,9 +48,9 @@ class RegistrationFormType extends AbstractType
                 'required' => true,
                 'label' => false,
                 'attr' => ['placeholder' => 'Email'],
-                'constraints' =>[
+                'constraints' => [
                     new Email([
-                        'message'=>'This is not the correct email format'
+                        'message' => 'This is not the correct email format'
                     ]),
                     new NotBlank([
                         'message' => 'Please enter a email'
@@ -61,7 +61,7 @@ class RegistrationFormType extends AbstractType
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
                 'required' => true,
-                'first_options'  => [
+                'first_options' => [
                     'label' => false,
                     'attr' => ['placeholder' => 'Password'],
                 ],
@@ -77,11 +77,13 @@ class RegistrationFormType extends AbstractType
                     new Length([
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
-                        'max' => 4096,
+                        'max' => 255,
                     ]),
                 ],
             ])
-            ->add('register', SubmitType::class);
+            ->add('submit', SubmitType::class, [
+                'label' => 'Register'
+            ]);
     }
 
     /**
